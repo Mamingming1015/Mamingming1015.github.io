@@ -1,0 +1,688 @@
+<!DOCTYPE html>
+<html lang="">
+
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+<meta name="x5-fullscreen" content="true">
+<meta name="full-screen" content="yes">
+<meta name="theme-color" content="#317EFB" />
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=0" name="viewport">
+<meta name="keywords" content="">
+<meta name="description" content="ECMAScript6基础ES6中的变量声明ES5 中，使用 var 定义全局变量（ var 是 variable 的简写）。 ES6 中，新增了 let 和 const 来定义变量：  let：定义局部变量，替代 var。 const：定义常量（定义后，不可修改）。  var定义全局变量看下面的代码 1234&amp;#123;    var a &#x3D; 1;&amp;#125;console.log(a); &#x2F;&#x2F;">
+<meta property="og:type" content="article">
+<meta property="og:title" content="ECMAScript6">
+<meta property="og:url" content="https://mamingming1015.github.io/2021/01/02/ES6%E7%AC%94%E8%AE%B0/index.html">
+<meta property="og:site_name" content="马明明">
+<meta property="og:description" content="ECMAScript6基础ES6中的变量声明ES5 中，使用 var 定义全局变量（ var 是 variable 的简写）。 ES6 中，新增了 let 和 const 来定义变量：  let：定义局部变量，替代 var。 const：定义常量（定义后，不可修改）。  var定义全局变量看下面的代码 1234&amp;#123;    var a &#x3D; 1;&amp;#125;console.log(a); &#x2F;&#x2F;">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://img.smyhvae.com/20190904_1030.gif">
+<meta property="og:image" content="http://img.smyhvae.com/20190904_1040.gif">
+<meta property="article:published_time" content="2021-01-02T05:15:01.000Z">
+<meta property="article:modified_time" content="2022-07-02T15:26:26.437Z">
+<meta property="article:author" content="马明明">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://img.smyhvae.com/20190904_1030.gif">
+
+    <meta name="description" content="个人博客">
+
+<title>
+    ECMAScript6
+</title>
+
+
+    <link rel="icon" type="image/png" sizes="32x32" href="/img/logo.ico?v=1.0.2">
+
+
+
+<link rel="preload" href="//at.alicdn.com/t/font_1518765_bkgx3wku6h4.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1518765_bkgx3wku6h4.css">
+
+
+<link rel="stylesheet" href="/css/plugins/bootstrap.min.css">
+<link rel="stylesheet" href="/css/plugins/locomotive-scroll.css">
+<link rel="stylesheet" href="/css/plugins/swiper.min.css">
+<link rel="stylesheet" href="/css/plugins/fancybox.min.css">
+<link rel="stylesheet" href="/css/plugins/font-awesome.min.css">
+
+
+<!-- variable -->
+<script>window.TYPED_TEXT=[
+  "Web Developer"
+]</script>
+<script>window.FAVICON={
+  "icon16": null,
+  "icon32": "/img/logo.ico",
+  "appleTouchIcon": null,
+  "webmanifest": null,
+  "visibilitychange": false,
+  "hidden": null,
+  "showText": "(/≧▽≦/)咦！又好了！",
+  "hideText": "(●—●)喔哟，崩溃啦！"
+}</script>
+<script>window.HTMEM_VERSION='1.0.2'</script>
+<link data-theme-type="style-light" rel="stylesheet" href="/css/style-light.css?v=1.0.2" id="trm-switch-style">
+<link data-theme-type="style-dark" rel="stylesheet" href="/css/style-dark.css?v=1.0.2" id="trm-switch-style">
+
+<!-- theme css -->
+<script>
+    let themeMode = localStorage.getItem('theme-mode') === 'style-dark' ? 'style-light' : 'style-dark';
+    let linkdom = document.querySelector('[data-theme-type='+themeMode+']');
+    if(linkdom) linkdom.remove();
+</script>
+
+<!-- Site Analytics -->
+ 
+<meta name="generator" content="Hexo 6.2.0"></head>
+
+<body>
+
+  <!-- app wrapper -->
+  <div class="trm-app-frame">
+
+    <!-- page preloader -->
+    <div class="trm-preloader">
+    <div class="trm-holder">
+        <div class="preloader">
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+    </div>
+</div>
+    <!-- page preloader end -->
+
+    <!-- change mode preloader -->
+    <div class="trm-mode-swich-animation-frame">
+    <div class="trm-mode-swich-animation"><i class="far fa-sun"></i>
+        <div class="trm-horizon"></div>
+        <i class="far fa-moon"></i>
+    </div>
+</div>
+    <!-- change mode preloader end -->
+
+      <!-- scroll container -->
+      <div id="trm-dynamic-content" class="trm-swup-animation">
+        <div id="trm-scroll-container" class="trm-scroll-container" data-scroll-container style="opacity: 0">
+          <div data-scroll-section id="content" class="trm-scroll-section">
+            <!-- top bar -->
+            <div class="trm-top-bar" data-scroll data-scroll-sticky data-scroll-target="#content" data-scroll-offset="-10">
+	<div class="container">
+		<div class="trm-left-side">
+			<!-- logo -->
+			<a href="/" class="trm-logo-frame trm-anima-link">
+				<img src="/img/logo.ico" alt="logo">
+				<div class="trm-logo-text">
+					马
+					<span>明明</span>
+				</div>
+			</a>
+			<!-- logo end -->
+		</div>
+		<div class="trm-right-side">
+
+			<!-- menu -->
+			<div class="trm-menu">
+				<nav>
+					<ul>
+						
+						<li class="menu-item-has-children ">
+							<a  href="/">
+								首页
+							</a>
+							
+						</li>
+						
+						<li class="menu-item-has-children ">
+							<a  href="/archives/">
+								归档
+							</a>
+							
+						</li>
+						
+						<li class="menu-item-has-children ">
+							<a  href="/links/">
+								友情链接
+							</a>
+							
+						</li>
+						
+						<li class="menu-item-has-children ">
+							<a  href="/about/">
+								关于
+							</a>
+							
+						</li>
+						
+					</ul>
+				</nav>
+			</div>
+			<!-- menu end -->
+
+			<!-- mode switcher place -->
+			<div class="trm-mode-switcher-place"></div>
+			<!-- mode switcher place end -->
+
+		</div>
+		<div class="trm-menu-btn">
+			<span></span>
+		</div>
+	</div>
+</div>
+            <!-- top bar end -->
+
+            <!-- body -->
+            <div class="trm-content-start">
+
+    <!-- banner -->
+    <div class="trm-banner" data-scroll data-scroll-direction="vertical">
+    <!-- banner cover -->
+    <img src="https://pic1.zhimg.com/v2-b3c2c6745b9421a13a3c4706b19223b3_r.jpg?source=1940ef5c" alt="banner" class="trm-banner-cover" data-scroll data-scroll-direction="vertical" data-scroll-speed="-3">
+    <!-- banner cover end -->
+
+    <!-- banner slideshow cover-->
+    <!-- <div class="swiper-container trm-slideshow" data-scroll data-scroll-direction="vertical" data-scroll-speed="-4">
+        <div class="swiper-wrapper">
+            <div class="swiper-slide"><img src="/img/blog/b1.jpg" alt="banner" class="trm-banner-cover" data-swiper-parallax-y="-200" data-swiper-parallax-scale="1.2"></div>
+            <div class="swiper-slide"><img src="/img/blog/b2.jpg" alt="banner" class="trm-banner-cover" data-swiper-parallax-y="-200" data-swiper-parallax-scale="1.2"></div>
+            <div class="swiper-slide"><img src="/img/blog/b3.jpg" alt="banner" class="trm-banner-cover" data-swiper-parallax-y="-200" data-swiper-parallax-scale="1.2"></div>
+        </div>
+    </div> -->
+    <!-- banner slideshow cover end -->
+
+    <!-- banner video cover -->
+    <!-- <video autoplay="autoplay" loop muted playsinline webkit-playinginline class="trm-banner-cover" data-scroll data-scroll-direction="vertical" data-scroll-speed="-4">
+        <source src="img/banner.mp4" type='video/mp4; codecs="avc1.42E01E, mp4a.40.2"'>
+        <source src="img/banner.webm" type='video/webm; codecs="vp8, vorbis"'>
+        <source src="img/banner.ogg" type='video/ogg; codecs="theora, vorbis"'>
+        Your browser does not support HTML5 video.
+    </video> -->
+    <!-- banner video cover end -->
+
+    <!-- banner cover end -->
+
+    <!-- banner content -->
+    <div class="trm-banner-content trm-overlay">
+        <div class="container" data-scroll data-scroll-direction="vertical" data-scroll-speed="0">
+            <div class="row">
+                <div class="col-lg-4"></div>
+                <div class="col-lg-8">
+
+                    <!-- banner title -->
+                    <div class="trm-banner-text">
+                        <div class="trm-label trm-mb-20">
+                            NEWS LETTER
+                        </div>
+                        <h1 class="trm-mb-30 trm-hsmb-font">
+                            ECMAScript6
+                        </h1>
+
+                        
+                            <ul class="trm-breadcrumbs trm-label">
+                                <li>
+                                    <a href="/" class="trm-anima-link">Home</a>
+                                </li>
+                                <li>
+                                    <span>
+                                        2021
+                                    </span
+                                ></li>
+                            </ul>
+                        
+                    </div>
+                    <!-- banner title end -->
+
+                    <!-- scroll hint -->
+                    <a href="#about-triger" data-scroll-to="#about-triger" data-scroll-offset="-130" class="trm-scroll-hint-frame">
+                        <div class="trm-scroll-hint"></div>
+                        <span class="trm-label">Scroll down</span>
+                    </a>
+                    <!-- scroll hint end -->
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- banner content end -->
+</div>
+    <!-- banner end -->
+
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-4">
+                <!-- main card -->
+                <div class="trm-main-card-frame trm-sidebar">
+    <div class="trm-main-card" data-scroll data-scroll-repeat data-scroll-sticky data-scroll-target="#content" data-scroll-offset="60">
+        <!-- card header -->
+        <div class="trm-mc-header">
+            <div class="trm-avatar-frame trm-mb-20"><img class="trm-avatar" src="/img/avatar.jpg" alt="Avatar"> </div>
+            <h5 class="trm-name trm-mb-15">
+                马明明
+            </h5>
+            <div class="trm-label">
+                I`m
+                <span class="trm-typed-text">
+                    <!-- Words for theme.user.typedText -->
+                </span>
+            </div>
+        </div>
+        <!-- card header end -->
+        <div class="trm-divider trm-mb-40 trm-mt-40"></div>
+        <!-- sidebar social -->
+        <div class="trm-social">
+            
+                <a href="https://github.com" rel="nofollow" target="_blank">
+                    <i class="fab fa-github"></i>
+                </a>
+            
+                <a href="https://gitee.com" rel="nofollow" target="_blank">
+                    <i class="iconfont cg-gitee"></i>
+                </a>
+            
+                <a href="https://weibo.com/" rel="nofollow" target="_blank">
+                    <i class="iconfont cg-weibo"></i>
+                </a>
+            
+        </div>
+        <!-- sidebar social end -->
+        <div class="trm-divider trm-mb-40 trm-mt-40"></div>
+        <!-- info -->
+        <ul class="trm-table trm-mb-20">
+            
+                <li>
+                    <div class="trm-label">
+                        Residence:
+                    </div>
+                    <div class="trm-label trm-label-light">
+                        Mars
+                    </div>
+                </li>
+            
+                <li>
+                    <div class="trm-label">
+                        City:
+                    </div>
+                    <div class="trm-label trm-label-light">
+                        WuHan
+                    </div>
+                </li>
+            
+                <li>
+                    <div class="trm-label">
+                        Age:
+                    </div>
+                    <div class="trm-label trm-label-light">
+                        18
+                    </div>
+                </li>
+            
+        </ul>
+        
+    </div>
+</div>
+                <!-- main card end -->
+            </div>
+            <div class="col-lg-8">
+                <!-- content -->
+                <div class="trm-content" id="trm-content">
+                    <div data-scroll data-scroll-repeat data-scroll-offset="500" id="about-triger"></div>
+                    
+                    <div class="row">
+                        <div class="col-lg-4">
+                            <div class="trm-card trm-label trm-label-light text-center"><i class="far fa-calendar-alt trm-icon"></i><br>
+                                01/02
+                            </div>
+                        </div>
+                        <div class="col-lg-4">
+                            <div class="trm-card trm-label trm-label-light text-center"><i class="far fa-clock trm-icon"></i><br>
+                                01:15
+                            </div>
+                        </div>
+                        <div class="col-lg-4">
+                            <div class="trm-card trm-label trm-label-light text-center"><i class="far fa-user trm-icon"></i><br>
+                                马明明
+                            </div>
+                        </div>
+                    </div>
+
+                    <article class="trm-card trm-publication">
+                        <h1 id="ECMAScript6基础"><a href="#ECMAScript6基础" class="headerlink" title="ECMAScript6基础"></a>ECMAScript6基础</h1><h2 id="ES6中的变量声明"><a href="#ES6中的变量声明" class="headerlink" title="ES6中的变量声明"></a>ES6中的变量声明</h2><p>ES5 中，使用 <code>var</code> 定义<strong>全局变量</strong>（ var 是 variable 的简写）。</p>
+<p>ES6 中，新增了 let 和 const 来定义变量：</p>
+<ul>
+<li><code>let</code>：定义<strong>局部变量</strong>，替代 var。</li>
+<li><code>const</code>：定义<strong>常量</strong>（定义后，不可修改）。</li>
+</ul>
+<h3 id="var定义全局变量"><a href="#var定义全局变量" class="headerlink" title="var定义全局变量"></a>var定义全局变量</h3><p>看下面的代码</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    <span class="keyword">var</span> a = <span class="number">1</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(a); <span class="comment">//这里的 a，指的是 区块 里的 a</span></span><br></pre></td></tr></table></figure>
+
+<p>上方代码是可以输出结果的，输出结果为 1。因为 var 是全局声明的，所以，即使是在区块里声明，但仍然在全局起作用。</p>
+<p>也就是说：<strong>使用 var 声明的变量不具备块级作用域特性</strong>。</p>
+<p>再来看下面这段代码：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> a = <span class="number">1</span>;</span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">var</span> a = <span class="number">2</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(a); <span class="comment">//这里的 a，指的是 区块 里的 a</span></span><br></pre></td></tr></table></figure>
+
+<p>上方代码的输出结果为 2 ，因为 var 是全局声明的。</p>
+<p><strong>总结：</strong></p>
+<p>用 var 定义的全部变量，有时候会污染整个 js 的作用域。我们在如今的实战中，基本都是用的 ES6 语法，所以请<strong>尽量避免</strong>使用 var 定义变量。</p>
+<h3 id="let定义局部变量"><a href="#let定义局部变量" class="headerlink" title="let定义局部变量"></a>let定义局部变量</h3><p>代码1：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    <span class="keyword">let</span> a = <span class="string">&#x27;hello&#x27;</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(a); <span class="comment">// 打印结果报错：Uncaught ReferenceError: a is not defined</span></span><br></pre></td></tr></table></figure>
+
+<p>代码2：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> a = <span class="number">2</span>;</span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">let</span> a = <span class="number">3</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(a); <span class="comment">// 打印结果：2</span></span><br></pre></td></tr></table></figure>
+
+<p>通过上面两个例子可以看出，<strong>用 let 声明的变量，只在局部（块级作用域内）起作用</strong>。</p>
+<p><strong>经典面试题</strong>：</p>
+<p>let 可以防止数据污染，我们来看下面这个 <strong>for 循环</strong>的经典面试题。</p>
+<p>用var声明变量：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; <span class="number">10</span>; i++) &#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;循环体中:&#x27;</span> + i);</span><br><span class="line">&#125;</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;循环体外:&#x27;</span> + i);</span><br></pre></td></tr></table></figure>
+
+<p>上方代码可以正常打印结果，且最后一行的打印结果是 10。说明<strong>循环体外</strong>定义的变量 i，是<strong>全局作用域</strong>下的 i。</p>
+<p>用let声明变量：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; <span class="number">10</span>; i++) &#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;循环体中:&#x27;</span> + i); <span class="comment">// // 每循环一次，就会在 &#123; &#125; 所在的块级作用域中，重新定义一个新的变量 i</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;循环体外:&#x27;</span> + i);<span class="comment">//这行代码报错</span></span><br></pre></td></tr></table></figure>
+
+<p>上方代码的关键在于：<strong>每次循环都会产生一个块级作用域，每个块级作用域中会重新定义一个新的变量 i</strong>。</p>
+<p>另外，上方代码的最后一行会报错。因为用 let 定义的变量 i，只在 <code>&#123; &#125;</code>这个<strong>块级作用域</strong>里生效。</p>
+<p><strong>总结：</strong>我们要习惯用 let 声明，减少 var 声明带来的<strong>污染全局空间</strong>。</p>
+<p>为了进一步说明 let 不会带来污染，需要说明的是：当我们定义了 <code>let a = 1</code>时，如果我们在同一个作用域内继续定义 <code>let a = 2</code>，是会报错的。</p>
+<h3 id="for循环举例（经典案例）"><a href="#for循环举例（经典案例）" class="headerlink" title="for循环举例（经典案例）"></a>for循环举例（经典案例）</h3><p><strong>代码1：首先用var声明变量</strong></p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;!DOCTYPE <span class="keyword">html</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span> <span class="attr">lang</span>=<span class="string">&quot;&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">meta</span> /&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">meta</span> /&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">meta</span> /&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">title</span>&gt;</span>Document<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">&quot;button&quot;</span> <span class="attr">value</span>=<span class="string">&quot;aa&quot;</span> /&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">&quot;button&quot;</span> <span class="attr">value</span>=<span class="string">&quot;bb&quot;</span> /&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">&quot;button&quot;</span> <span class="attr">value</span>=<span class="string">&quot;cc&quot;</span> /&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">&quot;button&quot;</span> <span class="attr">value</span>=<span class="string">&quot;dd&quot;</span> /&gt;</span></span><br><span class="line"></span><br><span class="line">        <span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="language-javascript"></span></span><br><span class="line"><span class="language-javascript">            <span class="keyword">var</span> myBtn = <span class="variable language_">document</span>.<span class="title function_">getElementsByTagName</span>(<span class="string">&#x27;input&#x27;</span>);</span></span><br><span class="line"><span class="language-javascript"></span></span><br><span class="line"><span class="language-javascript">            <span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; myBtn.<span class="property">length</span>; i++) &#123;</span></span><br><span class="line"><span class="language-javascript">                myBtn[i].<span class="property">onclick</span> = <span class="keyword">function</span> (<span class="params"></span>) &#123;</span></span><br><span class="line"><span class="language-javascript">                    <span class="title function_">alert</span>(i);</span></span><br><span class="line"><span class="language-javascript">                &#125;;</span></span><br><span class="line"><span class="language-javascript">            &#125;</span></span><br><span class="line"><span class="language-javascript">        </span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>运行效果如下</p>
+<p><img src="http://img.smyhvae.com/20190904_1030.gif"></p>
+<p>你可能会感到诧异，为何点击任何一个按钮，弹出的内容都是 4 呢？这是因为，我们用 var 定义的变量 i，是在全局作用域声明的。整个代码中，自始至终只有一个变量。</p>
+<p>for 循环是同步代码，而 onclick 点击事件是异步代码。当我们还没点击按钮之前，同步代码已经执行完了，变量 i 已经循环到 4 了。</p>
+<p>也就是说，上面的 for 循环，相当于如下代码：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> i = <span class="number">0</span>;</span><br><span class="line">myBtn[<span class="number">0</span>].<span class="property">onclick</span> = <span class="keyword">function</span> (<span class="params"></span>) &#123;</span><br><span class="line">    <span class="title function_">alert</span>(i);</span><br><span class="line">&#125;;</span><br><span class="line">i++;</span><br><span class="line"></span><br><span class="line">myBtn[<span class="number">1</span>].<span class="property">onclick</span> = <span class="keyword">function</span> (<span class="params"></span>) &#123;</span><br><span class="line">    <span class="title function_">alert</span>(i);</span><br><span class="line">&#125;;</span><br><span class="line">i++;</span><br><span class="line"></span><br><span class="line">myBtn[<span class="number">2</span>].<span class="property">onclick</span> = <span class="keyword">function</span> (<span class="params"></span>) &#123;</span><br><span class="line">    <span class="title function_">alert</span>(i);</span><br><span class="line">&#125;;</span><br><span class="line">i++;</span><br><span class="line"></span><br><span class="line">myBtn[<span class="number">3</span>].<span class="property">onclick</span> = <span class="keyword">function</span> (<span class="params"></span>) &#123;</span><br><span class="line">    <span class="title function_">alert</span>(i);</span><br><span class="line">&#125;;</span><br><span class="line">i++; <span class="comment">// 到这里，i 的值已经是4了。因此，当我们点击按钮时，i的值一直都是4</span></span><br></pre></td></tr></table></figure>
+
+<p><strong>代码2：用let声明变量</strong></p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;!DOCTYPE <span class="keyword">html</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span> <span class="attr">lang</span>=<span class="string">&quot;&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">meta</span> /&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">meta</span> /&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">meta</span> /&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">title</span>&gt;</span>Document<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">&quot;button&quot;</span> <span class="attr">value</span>=<span class="string">&quot;aa&quot;</span> /&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">&quot;button&quot;</span> <span class="attr">value</span>=<span class="string">&quot;bb&quot;</span> /&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">&quot;button&quot;</span> <span class="attr">value</span>=<span class="string">&quot;cc&quot;</span> /&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">&quot;button&quot;</span> <span class="attr">value</span>=<span class="string">&quot;dd&quot;</span> /&gt;</span></span><br><span class="line"></span><br><span class="line">        <span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="language-javascript"></span></span><br><span class="line"><span class="language-javascript">            <span class="keyword">var</span> myBtn = <span class="variable language_">document</span>.<span class="title function_">getElementsByTagName</span>(<span class="string">&#x27;input&#x27;</span>);</span></span><br><span class="line"><span class="language-javascript"></span></span><br><span class="line"><span class="language-javascript">            <span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; myBtn.<span class="property">length</span>; i++) &#123;</span></span><br><span class="line"><span class="language-javascript">                myBtn[i].<span class="property">onclick</span> = <span class="keyword">function</span> (<span class="params"></span>) &#123;</span></span><br><span class="line"><span class="language-javascript">                    <span class="title function_">alert</span>(i);</span></span><br><span class="line"><span class="language-javascript">                &#125;;</span></span><br><span class="line"><span class="language-javascript">            &#125;</span></span><br><span class="line"><span class="language-javascript">        </span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p><img src="http://img.smyhvae.com/20190904_1040.gif"></p>
+<p>上面这个运行结果，才是我们预期的效果。我们用 let 定义变量 i，在循环的过程中，每执行一次循环体，就会诞生一个新的 i。循环体执行 4 次，就会有四个 i。</p>
+<p>也就是说，上面的for循环代码相当于：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    <span class="keyword">let</span> i=<span class="number">0</span></span><br><span class="line">    myBtn.<span class="property">onclick</span>=<span class="keyword">function</span>(<span class="params"></span>)&#123;</span><br><span class="line">        <span class="title function_">alert</span>(i)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">let</span> i=<span class="number">1</span></span><br><span class="line">    myBtn.<span class="property">onclick</span>=<span class="keyword">function</span>(<span class="params"></span>)&#123;</span><br><span class="line">        <span class="title function_">alert</span>(i)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">let</span> i=<span class="number">3</span></span><br><span class="line">    myBtn.<span class="property">onclick</span>=<span class="keyword">function</span>(<span class="params"></span>)&#123;</span><br><span class="line">        <span class="title function_">alert</span>(i)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">let</span> i=<span class="number">4</span></span><br><span class="line">    myBtn.<span class="property">onclick</span>=<span class="keyword">function</span>(<span class="params"></span>)&#123;</span><br><span class="line">        <span class="title function_">alert</span>(i)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="const定义常量"><a href="#const定义常量" class="headerlink" title="const定义常量"></a>const定义常量</h3><p>在程序开发中，有些变量是希望声明后，在业务层就不再发生变化，此时可以用 const 来定义<strong>常量</strong>。常量就是值（内存地址）不能变化的量。</p>
+<p>举例：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> name = <span class="string">&#x27;smyhvae&#x27;</span>; <span class="comment">//定义常量</span></span><br></pre></td></tr></table></figure>
+
+<p>用 const 声明的常量，只在局部（块级作用域内）起作用；而且，用 const 声明常量时，必须赋值，否则报错。</p>
+<h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><ul>
+<li><p>let声明变量的特点</p>
+<ul>
+<li><p>变量不能重复声明</p>
+</li>
+<li><p>块级作用域，变量只在代码块里面有效（包括{}里面，for循环，if条件判断，函数等等），代码块外面无效</p>
+</li>
+<li><p>不存在变量提升（不会被预解析），存在<strong>暂时性死区</strong></p>
+</li>
+<li><p>不影响作用域链</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    <span class="keyword">let</span> school=<span class="string">&quot;清华大学&quot;</span></span><br><span class="line">    <span class="keyword">function</span> <span class="title function_">fn</span>(<span class="params"></span>)&#123;</span><br><span class="line">        <span class="variable language_">console</span>.<span class="title function_">log</span>(school)<span class="comment">//清华大学</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="title function_">fn</span>()</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+</ul>
+</li>
+<li><p>const定义常量的特点：</p>
+<ul>
+<li>必须要赋初始值，否则会报错</li>
+<li>一般声明的常量名使用大写（非语法要求，潜规则而已）</li>
+<li>常量的值不能修改，否则报错</li>
+<li>块级作用域</li>
+<li>对于数组和对象的元素的修改，不算对常量的修改，不会报错</li>
+</ul>
+</li>
+<li><p>let和const的共同点</p>
+<ul>
+<li>不属于顶层对象 Window</li>
+<li>不允许重复声明</li>
+<li>不存在变量提升</li>
+<li>暂时性死区</li>
+<li>支持块级作用域</li>
+</ul>
+</li>
+</ul>
+<p>相反， 用 <code>var</code>声明的变量：存在变量提升、可以重复声明、<strong>没有块级作用域</strong>。</p>
+<ul>
+<li>var&#x2F;let&#x2F;const 的共同点<ul>
+<li>全局作用域中定义的变量，可以在函数中使用。</li>
+<li>函数中声明的变量，只能在函数及其子函数中使用，外部无法使用。</li>
+</ul>
+</li>
+</ul>
+<h3 id="补充知识"><a href="#补充知识" class="headerlink" title="补充知识"></a>补充知识</h3><h4 id="暂时性死区"><a href="#暂时性死区" class="headerlink" title="暂时性死区"></a>暂时性死区</h4><p>ES6 规定：使用 let&#x2F;const 声明的变量，会使区块形成封闭的作用域。若在声明之前使用变量，就会报错。</p>
+<p>也就是说，在使用 let&#x2F;const 声明变量时，<strong>变量需要先声明，再使用</strong>（声明语句必须放在使用之前）。这在语法上，称为 “暂时性死区”（ temporal dead zone，简称 TDZ）。</p>
+<p>DTC 其实是一种保护机制，可以让我们养成良好的编程习惯。</p>
+<p>代码举例：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> name = <span class="string">&#x27;qianguyihao&#x27;</span>;</span><br><span class="line"><span class="keyword">function</span> <span class="title function_">foo</span>(<span class="params"></span>) &#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(name);</span><br><span class="line">    <span class="keyword">const</span> name = <span class="string">&#x27;hello&#x27;</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="title function_">foo</span>(); <span class="comment">// 执行函数后，控制台报错：Uncaught ReferenceError: Cannot access &#x27;name&#x27; before initialization</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="ES5中如何定义常量"><a href="#ES5中如何定义常量" class="headerlink" title="ES5中如何定义常量"></a>ES5中如何定义常量</h4><p>ES5中有 <code>Object.defineProperty</code>这样一个api，可以定义常量。这个API中接收三个参数。</p>
+<p>代码举例：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 定义常量 PI</span></span><br><span class="line"><span class="title class_">Object</span>.<span class="title function_">defineProperty</span>(<span class="variable language_">window</span>, <span class="string">&#x27;PI&#x27;</span>, &#123;</span><br><span class="line">    <span class="attr">value</span>: <span class="number">3.14</span>,</span><br><span class="line">    <span class="attr">writable</span>: <span class="literal">false</span>,</span><br><span class="line">&#125;);</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="variable constant_">PI</span>); <span class="comment">// 打印结果：3.14</span></span><br><span class="line"><span class="variable constant_">PI</span> = <span class="number">6</span>; <span class="comment">//尝试修改常量</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="variable constant_">PI</span>); <span class="comment">//打印结果：3.14，说明修改失败</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="变量的解构赋值"><a href="#变量的解构赋值" class="headerlink" title="变量的解构赋值"></a>变量的解构赋值</h2><p>ES6允许按照一定的模式从数组或对象中提取值，对变量进行赋值，这被称为解构赋值</p>
+<h3 id="数组的解构赋值"><a href="#数组的解构赋值" class="headerlink" title="数组的解构赋值"></a>数组的解构赋值</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> f4=[<span class="string">&quot;赵本山&quot;</span>,<span class="string">&quot;小沈阳&quot;</span>,<span class="string">&quot;刘能&quot;</span>,<span class="string">&quot;宋小宝&quot;</span>]</span><br><span class="line"><span class="keyword">let</span> [zhao,xiao,liu,song]=f4</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(zhao)<span class="comment">//赵本山</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(xiao)<span class="comment">//小沈阳</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(liu)<span class="comment">//刘能</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(song)<span class="comment">//宋小宝</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="完全解构"><a href="#完全解构" class="headerlink" title="完全解构"></a>完全解构</h4><p>变量和值一一对应</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> arr = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">5</span>,<span class="number">6</span>,<span class="literal">undefined</span>]</span><br><span class="line"><span class="keyword">let</span> [a,b,c,d,e,f]=arr</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(a,b,c,d,e,f)<span class="comment">//1 2 3 5 6 undefined</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="不完全解构"><a href="#不完全解构" class="headerlink" title="不完全解构"></a>不完全解构</h4><p>变量比值的数量少</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> arr = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">5</span>,<span class="number">6</span>,<span class="literal">undefined</span>]</span><br><span class="line"><span class="comment">//不需要接收的部分原本需要预留位置</span></span><br><span class="line"><span class="keyword">let</span> [,,cc,dd,,]=arr<span class="comment">//最后这两个预留的位置可以省略，这样写:let [,,cc,dd]=arr //3 5</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(cc,dd)<span class="comment">//3 5</span></span><br><span class="line"><span class="comment">//由于是按顺序解构，如果要接收的部分是前几个连续的值，以下这种情况可以不用预留位置</span></span><br><span class="line"><span class="keyword">let</span> [aa,bb]=arr</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(aa,bb)<span class="comment">//1 2</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="解构失败"><a href="#解构失败" class="headerlink" title="解构失败"></a>解构失败</h4><p>变量比值的数量多导致某个变量的值为undefined，或者这个变量对应的数据本身的值就是undefined，都叫做解构失败</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> arr=[<span class="number">2</span>,<span class="number">3</span>,<span class="number">5</span>,<span class="literal">undefined</span>]</span><br><span class="line"><span class="keyword">let</span> [aaa,bbb,ccc,ddd,eee]=arr</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(aaa,bbb,ccc,ddd,eee)<span class="comment">//2 3 5 undefined undefined</span></span><br><span class="line"><span class="comment">/*变量ddd对应的值本身就是undefined，变量eee解构的结果为undefined，相当于let eee=arr[4],没有arr[4]这个数据所以是undefined*/</span></span><br><span class="line"><span class="comment">//这两种情况都叫做解构失败</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="解构默认值"><a href="#解构默认值" class="headerlink" title="解构默认值"></a>解构默认值</h4><p>直接在变量后面赋值默认值,当解构赋值失败或者解构的值严格等于undefined时,解构的默认值才生效</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> arr1=[<span class="string">&quot;1&quot;</span>,<span class="string">&quot;2&quot;</span>,<span class="string">&quot;3&quot;</span>]</span><br><span class="line"><span class="keyword">let</span> [a1=<span class="string">&quot;&quot;</span>,a2=<span class="string">&quot;&quot;</span>,a3=<span class="string">&quot;&quot;</span>,a4,a5,a6]=arr1</span><br><span class="line"><span class="comment">//变量没有默认值时</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(a1+a2+a3+a4+a5+a6)<span class="comment">//123undefinedundefinedundefined</span></span><br><span class="line"><span class="comment">//给变量添加默认值时</span></span><br><span class="line"><span class="keyword">let</span> [a1,a2,a3,a4=<span class="number">2</span>,a5=<span class="number">6</span>,a6=<span class="number">9</span>]=arr1</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(a1+a2+a3+a4+a5+a6)<span class="comment">//123269</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="数组解构的应用"><a href="#数组解构的应用" class="headerlink" title="数组解构的应用"></a>数组解构的应用</h4><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//作用一:解构数据</span></span><br><span class="line"><span class="comment">//拿到2,4,7,8,10</span></span><br><span class="line"><span class="comment">//方法1:自创</span></span><br><span class="line"><span class="keyword">let</span> arr = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, [<span class="number">4</span>, <span class="number">5</span>, <span class="number">6</span>, [<span class="number">7</span>, <span class="number">8</span>], <span class="number">9</span>, [<span class="number">10</span>]]]</span><br><span class="line"><span class="keyword">let</span> [,a,,b]=arr <span class="comment">//a=2 b=[4, 5, 6, [7, 8], 9, [10]]</span></span><br><span class="line"><span class="keyword">let</span> [c,,,d,,e]=b<span class="comment">//c=4 d=[7,8] e=[10]</span></span><br><span class="line"><span class="keyword">let</span> [f,g]=d<span class="comment">//f=7 g=8</span></span><br><span class="line"><span class="keyword">let</span> [h]=e<span class="comment">//h=10</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(a,c,f,g,h)</span><br><span class="line"><span class="comment">//方法2:老师的</span></span><br><span class="line"><span class="keyword">let</span> [,a,,[b,,,[c,d],,[e]]]=arr</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(a,b,c,d,e)</span><br><span class="line"></span><br><span class="line"><span class="comment">//作用二:交换数据</span></span><br><span class="line"><span class="comment">//传统方法:</span></span><br><span class="line"><span class="keyword">let</span> x=<span class="number">10</span></span><br><span class="line"><span class="keyword">let</span> y=<span class="number">20</span></span><br><span class="line">temp=x</span><br><span class="line">x=y</span><br><span class="line">y=temp</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(x,y)<span class="comment">//20 10</span></span><br><span class="line"><span class="comment">//数组解构方法</span></span><br><span class="line">[y,x]=[x,y]</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(x,y)<span class="comment">//20 10</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="对象的解构赋值"><a href="#对象的解构赋值" class="headerlink" title="对象的解构赋值"></a>对象的解构赋值</h3><p>对象的解构不是顺序解构,不需要缺省值</p>
+<p>语法:</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> &#123;<span class="attr">key1</span>:变量名<span class="number">1</span>,<span class="attr">key2</span>:变量名<span class="number">2</span>,<span class="attr">key3</span>:变量名<span class="number">3</span>&#125;=&#123;<span class="attr">key1</span>:val1,<span class="attr">key2</span>:val2,<span class="attr">key3</span>:val3&#125;</span><br><span class="line"><span class="comment">//key是模式的一部分,对应的是obj里的key</span></span><br><span class="line"><span class="comment">//通常情况下会把变量名和key保持一致,可以简写成</span></span><br><span class="line"><span class="keyword">let</span> &#123;key1,key2,key3&#125;=&#123;<span class="attr">key1</span>:val1,<span class="attr">key2</span>:val2,<span class="attr">key3</span>:val3&#125;</span><br></pre></td></tr></table></figure>
+
+<p>代码示例:</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> zhao=&#123;</span><br><span class="line">    <span class="attr">name</span>:<span class="string">&quot;赵本山&quot;</span>,</span><br><span class="line">    <span class="attr">age</span>:<span class="string">&quot;不详&quot;</span>,</span><br><span class="line">    <span class="attr">xiaopin</span>:<span class="keyword">function</span>(<span class="params"></span>)&#123;</span><br><span class="line">        <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;我会演小品&quot;</span>)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">let</span> &#123;name,age,xiaopin&#125;=zhao</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(name)</span><br><span class="line">consloe.<span class="title function_">log</span>(age)</span><br><span class="line"><span class="title function_">xiaopin</span>()</span><br></pre></td></tr></table></figure>
+
+<h4 id="解构成功"><a href="#解构成功" class="headerlink" title="解构成功"></a>解构成功</h4><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> obj = &#123;</span><br><span class="line">        <span class="attr">age</span>: <span class="number">10</span>,</span><br><span class="line">        <span class="attr">sex</span>: <span class="string">&quot;女&quot;</span>,</span><br><span class="line">        <span class="attr">name</span>: <span class="string">&#x27;zs&#x27;</span>,</span><br><span class="line">        <span class="attr">hobby</span>: [<span class="string">&quot;学习&quot;</span>, <span class="string">&quot;工作&quot;</span>],</span><br><span class="line">        <span class="attr">weight</span>:<span class="literal">undefined</span></span><br><span class="line">    &#125;</span><br><span class="line"><span class="comment">//左边的变量是根据对应的key值来寻找数据的</span></span><br><span class="line"><span class="keyword">let</span> &#123;</span><br><span class="line">    <span class="attr">age</span>:a,</span><br><span class="line">    <span class="attr">sex</span>:b,</span><br><span class="line">    <span class="attr">name</span>:c,</span><br><span class="line">    <span class="attr">hobby</span>:d,</span><br><span class="line">&#125;=obj</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(a,b,c,d)</span><br><span class="line"><span class="comment">//因为数组是按照位置去找值的,所以不需要的值要预留出来,给一个缺省值</span></span><br><span class="line"><span class="comment">//而对象是根据key去找值的,所以不要的值,就直接把这一项对应的key去掉就可以了</span></span><br><span class="line"><span class="keyword">let</span> &#123;<span class="attr">name</span>:a&#125;=obj</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(a)<span class="comment">//&quot;zs&quot;</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="解构失败-1"><a href="#解构失败-1" class="headerlink" title="解构失败"></a>解构失败</h4><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> obj = &#123;</span><br><span class="line">    <span class="attr">age</span>: <span class="number">10</span>,</span><br><span class="line">    <span class="attr">sex</span>: <span class="string">&quot;女&quot;</span>,</span><br><span class="line">    <span class="attr">name</span>: <span class="string">&#x27;zs&#x27;</span>,</span><br><span class="line">    <span class="attr">hobby</span>: [<span class="string">&quot;学习&quot;</span>, <span class="string">&quot;工作&quot;</span>],</span><br><span class="line">    <span class="attr">weight</span>:<span class="literal">undefined</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// =左边的变量是根据对应的key值来寻找数据的</span></span><br><span class="line"><span class="comment">// 2、解构失败</span></span><br><span class="line"><span class="keyword">let</span> &#123;</span><br><span class="line">    <span class="attr">age</span>:b,</span><br><span class="line">    <span class="attr">name</span>:a,</span><br><span class="line">    <span class="attr">sex</span>:c,</span><br><span class="line">    <span class="attr">hobby</span>:d,</span><br><span class="line">    <span class="attr">height</span>:e</span><br><span class="line">&#125;=obj</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(e);<span class="comment">//undefined ===&gt; obj.height</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="解构的默认值"><a href="#解构的默认值" class="headerlink" title="解构的默认值"></a>解构的默认值</h4><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> obj = &#123;</span><br><span class="line">    <span class="attr">age</span>: <span class="number">10</span>,</span><br><span class="line">    <span class="attr">sex</span>: <span class="string">&quot;女&quot;</span>,</span><br><span class="line">    <span class="attr">name</span>: <span class="string">&#x27;zs&#x27;</span>,</span><br><span class="line">    <span class="attr">hobby</span>: [<span class="string">&quot;学习&quot;</span>, <span class="string">&quot;工作&quot;</span>],</span><br><span class="line">    <span class="attr">weight</span>:<span class="literal">undefined</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// =左边的变量是根据对应的key值来寻找数据的</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 3、解构失败的默认值（解构出来的数据为undefined时才生效）</span></span><br><span class="line"><span class="keyword">let</span> &#123;</span><br><span class="line">    <span class="attr">age</span>: b,</span><br><span class="line">    <span class="attr">name</span>: a,</span><br><span class="line">    <span class="attr">sex</span>: c,</span><br><span class="line">    <span class="attr">hobby</span>: d,</span><br><span class="line">    <span class="attr">height</span>: e=<span class="number">180</span>,</span><br><span class="line">    <span class="attr">weight</span>: f=<span class="number">180</span></span><br><span class="line">&#125; = obj</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(e);<span class="comment">//180</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(f);<span class="comment">//180 </span></span><br></pre></td></tr></table></figure>
+
+<h4 id="解构的简写形式"><a href="#解构的简写形式" class="headerlink" title="解构的简写形式"></a>解构的简写形式</h4><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 一般我们会把变量名起的和key一样（如果key和变量名一样，则可以简写 ）</span></span><br><span class="line"><span class="keyword">let</span> &#123;</span><br><span class="line">    age,</span><br><span class="line">    name,</span><br><span class="line">    sex,</span><br><span class="line">    hobby,</span><br><span class="line">    height=<span class="number">180</span>,</span><br><span class="line">    weight=<span class="number">180</span></span><br><span class="line">&#125; = obj</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(age, name,sex,hobby,height,weight);</span><br></pre></td></tr></table></figure>
+
+<h4 id="对象解构的应用"><a href="#对象解构的应用" class="headerlink" title="对象解构的应用"></a>对象解构的应用</h4><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span>  obj=&#123;<span class="attr">p</span>:[<span class="string">&quot;hello&quot;</span>,&#123;<span class="attr">y</span>:<span class="string">&quot;world&quot;</span>&#125;]&#125;;</span><br><span class="line"><span class="comment">//得到以下结果</span></span><br><span class="line"><span class="comment">// [&quot;hello&quot;,&#123;y:&quot;world&quot;&#125;] </span></span><br><span class="line"><span class="comment">// hello</span></span><br><span class="line"><span class="comment">// world</span></span><br><span class="line"><span class="keyword">let</span> &#123;p&#125;=obj</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(p)<span class="comment">//[&quot;hello&quot;,&#123;y:&quot;world&quot;&#125;]</span></span><br><span class="line"><span class="keyword">let</span> &#123;<span class="attr">p</span>:[a,&#123;<span class="attr">y</span>:b&#125;]&#125;=obj</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(a,b)<span class="comment">//hello world</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="字符串的解构赋值"><a href="#字符串的解构赋值" class="headerlink" title="字符串的解构赋值"></a>字符串的解构赋值</h3><p>字符串也可以解构赋值,这是因为此时,字符串被转换成了一个类似数组的对象</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> [a,b,c,d,e]=<span class="string">&quot;hello&quot;</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(a,b,c,d,e)<span class="comment">//h e l l o</span></span><br></pre></td></tr></table></figure>
+
+<p>类似数组的对象都有一个length属性,因此还可以对这个属性解构赋值</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> &#123;<span class="attr">length</span>:len&#125;=<span class="string">&quot;hello&quot;</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(len)<span class="comment">// 5</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="函数参数的解构赋值"><a href="#函数参数的解构赋值" class="headerlink" title="函数参数的解构赋值"></a>函数参数的解构赋值</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">add</span>(<span class="params">[x,y]</span>)&#123;</span><br><span class="line">    <span class="keyword">return</span> x+y</span><br><span class="line">&#125;</span><br><span class="line"><span class="title function_">add</span>([<span class="number">1</span>,<span class="number">2</span>]) <span class="comment">//3</span></span><br></pre></td></tr></table></figure>
+
+<p>上述代码中,函数add的参数表面上是一个数组,但在传入参数的那一刻,数组参数就被解构成变量x和y,对于函数内部的代码来说,他们能感受到的就是x和y</p>
+<h3 id="字符串的遍历器接口"><a href="#字符串的遍历器接口" class="headerlink" title="字符串的遍历器接口"></a>字符串的遍历器接口</h3><p>ES6为字符串添加了遍历器接口,使得字符串可以被for…of和for…in循环遍历</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span>(<span class="keyword">let</span> a <span class="keyword">of</span> <span class="string">&quot;大家好&quot;</span>)&#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(a)<span class="comment">/* 大</span></span><br><span class="line"><span class="comment">    				家</span></span><br><span class="line"><span class="comment">    				好				*/</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">let</span> b <span class="keyword">in</span> <span class="string">&quot;大家好&quot;</span>)&#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(b)<span class="comment">/*0 </span></span><br><span class="line"><span class="comment">                    1</span></span><br><span class="line"><span class="comment">           	        2         	        */</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="字符串扩展"><a href="#字符串扩展" class="headerlink" title="字符串扩展"></a>字符串扩展</h2><h3 id="模板字符串"><a href="#模板字符串" class="headerlink" title="模板字符串"></a>模板字符串</h3><h3 id="字符串新增的方法"><a href="#字符串新增的方法" class="headerlink" title="字符串新增的方法"></a>字符串新增的方法</h3><ul>
+<li><p><strong>startsWidth(string[,index])</strong>  –判断字符串是否是以某个字符(串)开头</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> str=<span class="string">&quot;hello world&quot;</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(str.<span class="title function_">startsWith</span>(<span class="string">&quot;h&quot;</span>))<span class="comment">//true </span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(str.<span class="title function_">startsWith</span>(<span class="string">&quot;w&quot;</span>,<span class="number">6</span>))<span class="comment">//true (从索引为6的位置开始查找)</span></span><br></pre></td></tr></table></figure></li>
+<li><p><strong>endsWith(string[,length])</strong>  –判断字符串是否是以某个字符结尾</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> str=<span class="string">&quot;hello world&quot;</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(str.<span class="title function_">endsWith</span>(<span class="string">&quot;d&quot;</span>))<span class="comment">//true </span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(str.<span class="title function_">endsWith</span>(<span class="string">&quot;w&quot;</span>,<span class="number">6</span>))<span class="comment">//false (从开头往后截取长度为6的部分,判断是不是以w结尾)</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(str.<span class="title function_">endsWith</span>(<span class="string">&quot; &quot;</span>,<span class="number">6</span>))<span class="comment">//true</span></span><br></pre></td></tr></table></figure></li>
+<li><p><strong>includes(string[,index])</strong>  –判断字符串是否包含某个字符</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> str=<span class="string">&quot;hello world&quot;</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(str.<span class="title function_">includes</span>(<span class="string">&quot;w&quot;</span>))<span class="comment">// true</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(str.<span class="title function_">includes</span>(<span class="string">&quot;w&quot;</span>,<span class="number">7</span>))<span class="comment">//false (从索引为7的位置开始往后查找看看是否包含w这个字符</span></span><br></pre></td></tr></table></figure></li>
+<li><p><strong>padStart(maxlength[,string])</strong>  –先判断字符串的长度是小于指定的长度,小于则在开头填充指定的字符以达到指定的长度</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> str1 = str.<span class="title function_">padStart</span>(<span class="number">12</span>,<span class="string">&quot;哈哈&quot;</span>)</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(str1)<span class="comment">//&#x27;哈hello world&#x27;</span></span><br></pre></td></tr></table></figure></li>
+<li><p><strong>padEnd(maxlength[,string])</strong>  –先判断字符串的长度是小于指定的长度,小于则在结尾填充指定的字符以达到指定的长度</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> str2 = str.<span class="title function_">padEnd</span>(<span class="number">12</span>,<span class="string">&quot;哈哈&quot;</span>)</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(str2) <span class="comment">//&#x27;hello world哈&#x27;</span></span><br></pre></td></tr></table></figure></li>
+<li><p><strong>repeat(num)</strong>  –将字符串重复num次</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> str3 = str.<span class="title function_">repeat</span>(<span class="number">3</span>)</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(str3) <span class="comment">//hello worldhello worldhello world</span></span><br></pre></td></tr></table></figure></li>
+<li><p><strong>trimStart()</strong> || <strong>trimEnd()</strong>  –消除头部&#x2F;尾部空格</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> str4 = <span class="string">&quot; |hello world|  &quot;</span> </span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(str4.<span class="title function_">trimStart</span>())  <span class="comment">//&#x27;|hello world|  &#x27;</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(str4.<span class="title function_">trimEnd</span>()) <span class="comment">//&#x27; |hello world|&#x27;</span></span><br></pre></td></tr></table></figure></li>
+</ul>
+<h2 id="数组扩展"><a href="#数组扩展" class="headerlink" title="数组扩展"></a>数组扩展</h2>
+                    </article>
+
+                    <!-- blog -->
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <!-- title -->
+                            <h5 class="trm-mb-40 trm-title-with-divider">
+                                Other Articles
+                                <span data-number="02"></span>
+                            </h5>
+                        </div>
+                        
+                            <div class="col-lg-6">
+    <div class="trm-blog-card trm-scroll-animation" data-scroll data-scroll-offset="40">
+        <a href="/2021/03/20/%E9%97%AD%E5%8C%85%E5%92%8C%E9%80%92%E5%BD%92/" class="trm-cover-frame trm-anima-link">
+            <img src="/img/block.jpg" alt="cover">
+        </a>
+        <div class="trm-card-descr">
+            <div class="trm-label trm-category trm-mb-20">
+                <a href=" #.">
+                    unclassified
+                </a>
+            </div>
+            <h5>
+                <a href="/2021/03/20/%E9%97%AD%E5%8C%85%E5%92%8C%E9%80%92%E5%BD%92/" class="trm-anima-link">
+                    闭包和递归
+                </a>
+            </h5>
+            <div class="trm-divider trm-mb-20 trm-mt-20"></div>
+            <ul class="trm-card-data trm-label">
+                <li>
+                    03/20
+                </li>
+                <li>
+                    03:26
+                </li>
+                <li>
+                    1.1k
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+                        
+                        
+                            <div class="col-lg-6">
+    <div class="trm-blog-card trm-scroll-animation" data-scroll data-scroll-offset="40">
+        <a href="/2020/11/18/CSS%E7%9B%92%E5%AD%90%E6%A8%A1%E5%9E%8B/" class="trm-cover-frame trm-anima-link">
+            <img src="/img/block.jpg" alt="cover">
+        </a>
+        <div class="trm-card-descr">
+            <div class="trm-label trm-category trm-mb-20">
+                <a href=" #.">
+                    unclassified
+                </a>
+            </div>
+            <h5>
+                <a href="/2020/11/18/CSS%E7%9B%92%E5%AD%90%E6%A8%A1%E5%9E%8B/" class="trm-anima-link">
+                    详解CSS盒子模型
+                </a>
+            </h5>
+            <div class="trm-divider trm-mb-20 trm-mt-20"></div>
+            <ul class="trm-card-data trm-label">
+                <li>
+                    11/18
+                </li>
+                <li>
+                    12:26
+                </li>
+                <li>
+                    5.7k
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+                        
+                    </div>
+                    <!-- blog end -->
+
+                    
+
+                    <div class="trm-divider trm-mb-40"></div>
+
+                    <!-- footer -->
+                    <footer class="trm-scroll-animation" data-scroll data-scroll-offset="50">
+    <div class="trm-label">
+        ©  2022- 2022 ·
+        <span class="trm-accent-color">
+            马明明
+        </span>
+    </div>
+    <div class="trm-label">
+        The blog has been lovely to run:
+        <span id="since" class="trm-accent-color"></span>
+        day
+    </div>
+</footer>
+<script>
+    function show_date_time () {
+        BirthDay = new Date("04/10/2021 17:00:00");
+        today = new Date();
+        timeold = (today.getTime() - BirthDay.getTime());
+        msPerDay = 24 * 60 * 60 * 1000
+        day = Math.floor(timeold / msPerDay)
+        since.innerHTML = day
+    }
+    show_date_time()
+</script>
+                    <!-- footer end -->
+                </div>
+                <!-- content end -->
+            </div>
+        </div>
+    </div>
+</div>
+
+
+    
+  
+  
+            <!-- body end -->
+          </div>
+        </div>
+      </div>
+      <!-- scroll container end -->
+
+      <!-- mode switcher -->
+      <div class="trm-hidden-switcher">
+        <div class="trm-mode-switcher"><i class="far fa-sun"></i>
+          <input class="tgl tgl-light" id="trm-swich" type="checkbox">
+          <label class="trm-swich" for="trm-swich"></label>
+          <i class="far fa-moon"></i>
+        </div>
+      </div>
+      <!-- mode switcher end -->
+
+  </div>
+  <!-- app wrapper end -->
+
+  
+<script src="/js/plugins/jquery.min.js"></script>
+<script src="/js/plugins/swup.min.js"></script>
+<script src="/js/plugins/locomotive-scroll.js"></script>
+<script src="/js/plugins/typing.js"></script>
+<script src="/js/plugins/fancybox.min.js"></script>
+<script src="/js/plugins/swiper.min.js"></script>
+
+
+<!-- 评论插件 -->
+
+
+<!-- Service Worker -->
+
+
+<script src="/js/main.js?v=1.0.2"></script>
+
+
+</body>
+
+</html>
